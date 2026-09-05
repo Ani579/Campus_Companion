@@ -8,9 +8,9 @@ import { fileURLToPath } from 'url';
 import authRoutes from './auth.js';
 import noteRoutes from './notes.js';
 import taskRoutes from './tasks.js';
-import attendanceRoutes from './attendance.js';
+import attendanceRoutes from './attendanceRoutes.js';
 import aiRoutes from './ai.js';
-import userRoutes from './user.js';
+import userRoutes from './userRoutes.js';
 
 dotenv.config();
 

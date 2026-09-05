@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, AuthContext } from './AuthContext';
+import { AuthProvider, AuthContext } from './AuthContext.jsx';
 import { useContext } from 'react';
 
-import Login from './pages/Login';
-import Dashboard from './Dashboard';
-import Notes from './pages/Notes';
-import Tasks from './Tasks';
-import Attendance from './pages/Attendance';
-import AIAssistant from './AIAssistant';
-import Profile from './pages/Profile';
-import Sidebar from './Sidebar';
+import Login from './Login.jsx';
+import Dashboard from './Dashboard.jsx';
+import Notes from './Notes.jsx';
+import Tasks from './Tasks.jsx';
+import Attendance from './Attendance.jsx';
+import AIAssistant from './AIAssistant.jsx';
+import Profile from './Profile.jsx';
+import Sidebar from './Sidebar.jsx';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);

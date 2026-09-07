@@ -53,6 +53,19 @@ PORT=5000
 MONGO_URI=mongodb://localhost:27017/campus-companion
 JWT_SECRET=your_secure_jwt_secret
 GEMINI_API_KEY=your_google_gemini_api_key
+
+# Password reset email delivery
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_email@example.com
+SMTP_PASS=your_email_password_or_app_password
+SMTP_FROM=Campus Companion <your_email@example.com>
+
+# Optional SMS delivery through Twilio
+TWILIO_ACCOUNT_SID=your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_FROM_NUMBER=your_twilio_phone_number
 ```
 
 ## Setup Instructions

@@ -15,14 +15,14 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
-    const res = await axios.post(`${apiStr}/auth/login`, { email, password });
+  const login = async (identifier, password) => {
+    const res = await axios.post(`${apiStr}/auth/login`, { identifier, password });
     localStorage.setItem('userInfo', JSON.stringify(res.data));
     setUser(res.data);
   };
 
-  const register = async (name, email, password) => {
-    const res = await axios.post(`${apiStr}/auth/register`, { name, email, password });
+  const register = async (name, email, password, phone) => {
+    const res = await axios.post(`${apiStr}/auth/register`, { name, email, password, phone });
     localStorage.setItem('userInfo', JSON.stringify(res.data));
     setUser(res.data);
   };

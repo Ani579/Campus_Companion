@@ -1,37 +1,39 @@
 {
-    "version":  "1.0.0",
-    "name":  "campus-companion-unified",
-    "scripts":  {
-                    "build":  "vite build",
-                    "dev":  "concurrently \"vite\" \"nodemon server.js\"",
-                    "start":  "node server.js"
-                },
-    "type":  "module",
-    "dependencies":  {
-                         "axios":  "^1.6.8",
-                         "framer-motion":  "^11.1.7",
-                         "lucide-react":  "^0.373.0",
-                         "react":  "^18.2.0",
-                         "react-dom":  "^18.2.0",
-                         "react-router-dom":  "^6.23.0",
-                         "@google/generative-ai":  "^0.11.0",
-                         "bcryptjs":  "^2.4.3",
-                         "cors":  "^2.8.5",
-                         "dotenv":  "^16.4.5",
-                         "express":  "^4.19.2",
-                         "jsonwebtoken":  "^9.0.2",
-                         "mongoose":  "^8.3.2",
-                         "multer":  "^2.1.1"
-                     },
-    "devDependencies":  {
-                            "@types/react":  "^18.2.66",
-                            "@types/react-dom":  "^18.2.22",
-                            "@vitejs/plugin-react":  "^4.2.1",
-                            "autoprefixer":  "^10.4.19",
-                            "postcss":  "^8.4.38",
-                            "tailwindcss":  "^3.4.3",
-                            "vite":  "^5.2.0",
-                            "nodemon":  "^3.1.0",
-                            "concurrently":  "^8.2.2"
-                        }
+    "version": "1.0.0",
+    "name": "campus-companion-unified",
+    "scripts": {
+        "build": "vite build",
+        "dev": "concurrently \"vite\" \"nodemon server.js\"",
+        "start": "node server.js"
+    },
+    "type": "module",
+    "dependencies": {
+        "@google/generative-ai": "^0.11.0",
+        "axios": "^1.6.8",
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "framer-motion": "^11.1.7",
+        "jsonwebtoken": "^9.0.2",
+        "lucide-react": "^0.373.0",
+        "mongoose": "^8.3.2",
+        "multer": "^2.1.1",
+        "nodemailer": "^10.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.23.0",
+        "twilio": "^6.1.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.66",
+        "@types/react-dom": "^18.2.22",
+        "@vitejs/plugin-react": "^4.2.1",
+        "autoprefixer": "^10.4.19",
+        "concurrently": "^8.2.2",
+        "nodemon": "^3.1.0",
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.3",
+        "vite": "^5.2.0"
+    }
 }

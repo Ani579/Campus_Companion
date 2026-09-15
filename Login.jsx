@@ -59,7 +59,11 @@ const Login = () => {
       }
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Authentication failed');
+      if (!err.response) {
+        setError('Cannot reach the authentication server. Start the backend and try again.');
+      } else {
+        setError(err.response.data?.message || 'Authentication failed');
+      }
     }
   };
 

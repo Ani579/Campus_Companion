@@ -12,6 +12,7 @@ const generateToken = (id) => {
 };
 
 const normalizeEmail = (email) => email?.trim().toLowerCase();
+const normalizePhone = (phone) => phone?.trim().replace(/[\s()-]/g, '');
 
 const hashOtp = (otp) => crypto.createHash('sha256').update(otp).digest('hex');
 
@@ -60,7 +61,7 @@ router.post('/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user = await User.create({ name, email: normalizedEmail, phone: phone?.trim(), password: hashedPassword });
+    const user = await User.create({ name, email: normalizedEmail, phone: normalizePhone(phone), password: hashedPassword });
 
     if (user) {
       res.status(201).json({
@@ -76,14 +77,30 @@ router.post('/login', async (req, res) => {
   try {
     const { identifier, email, password } = req.body;
     const loginIdentifier = (identifier || email)?.trim();
+    if (!loginIdentifier || !password) {
+      return res.status(400).json({ message: 'Email/mobile number and password are required' });
+    }
+
     const user = await User.findOne({
       $or: [
         { email: normalizeEmail(loginIdentifier) },
-        { phone: loginIdentifier },
+        { phone: normalizePhone(loginIdentifier) },
       ],
     });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
+    let passwordMatches = false;
+    if (user) {
+      passwordMatches = await bcrypt.compare(password, user.password).catch(() => false);
+
+      // Migrate accounts created before passwords were hashed by this API.
+      if (!passwordMatches && user.password === password) {
+        user.password = await bcrypt.hash(password, 10);
+        await user.save();
+        passwordMatches = true;
+      }
+    }
+
+    if (user && passwordMatches) {
       res.json({
         _id: user.id, name: user.name, email: user.email, token: generateToken(user._id)
       });
